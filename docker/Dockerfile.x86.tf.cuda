@@ -1,0 +1,18 @@
+FROM nvidia/cuda:9.0-cudnn7-devel
+
+RUN apt update 
+RUN apt install -y --no-install-recommends git wget curl cmake
+
+RUN pip3 install "numpy>=1.18.5,<1.20"
+RUN pip3 install tqdm
+RUN pip3 install scipy
+RUN pip3 uninstall -y pillow
+RUN pip3 install "pillow<7"
+RUN pip3 install "matplotlib>=3.2.2,<4"
+
+RUN pip3 install dlib 
+RUN pip3 install face_recognition
+
+RUN apt install -y libopencv-dev python3-opencv
+
+COPY ../*
